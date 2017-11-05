@@ -2,18 +2,15 @@ package action;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.Action;
-import javax.swing.ImageIcon;
+import view.GameView;
 
-public class FisheyeAction implements ActionListener {
+public class GameAction implements ActionListener {
 
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		GameView igrica = new GameView();
 
 	}
 
