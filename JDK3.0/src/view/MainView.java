@@ -2,12 +2,18 @@ package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+import com.sun.javafx.scene.control.behavior.SliderBehavior.SliderKeyBinding;
 
 import action.AutoAdjustAction;
 import action.BrightnessAction;
@@ -16,6 +22,7 @@ import action.FisheyeAction;
 import action.GameAction;
 import action.GrayscaleAction;
 import action.NegativeAction;
+import action.OpenImageAction;
 import action.PaintingAction;
 import action.ReflectionAction;
 import action.SharpenAction;
@@ -38,8 +45,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
 public class MainView extends JFrame {
-	JPanel panelSlika = new JPanel();
-	JPanel toolBarPanel = new JPanel();
+	private ImagePanel panelSlika = new ImagePanel();
+	private JPanel toolBarPanel = new JPanel();
 
 	public MainView() {
 		setAlwaysOnTop(true);
@@ -49,12 +56,28 @@ public class MainView extends JFrame {
 		this.setLocationRelativeTo(null);
 		ImageIcon icon = new ImageIcon(getClass().getResource("/images/mainicon.png"));
 		this.setIconImage(icon.getImage());
+		
+		for(UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
+			System.out.println(info.getName());
+			if("Nimbus".equals(info.getName())){
+				try {
+					UIManager.setLookAndFeel(info.getClassName());
+				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+						| UnsupportedLookAndFeelException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		JMenuBar menuBar = new JMenuBar();
 		getContentPane().add(menuBar, BorderLayout.NORTH);
-
+		
+		JMenu file = new JMenu("File");
+		file.add(new OpenImageAction(this));
 		JMenu fixImg = new JMenu("Fix image");
+		menuBar.add(file);
 		menuBar.add(fixImg);
 		fixImg.add(new ContrastAction());
 		fixImg.add(new SharpenAction());
@@ -89,7 +112,8 @@ public class MainView extends JFrame {
 		JLabel lblClickBelowFor = new JLabel("click below for filter");
 		toolBar.add(lblClickBelowFor);
 
-		JButton btnNegative = new JButton("Negative ");
+		JButton btnNegative = new JButton("Negative   ");
+		btnNegative.setSize(100, 30);
 		toolBar.add(btnNegative);
 		btnNegative.addActionListener(new NegativeAction());
 		try {
@@ -109,7 +133,7 @@ public class MainView extends JFrame {
 			e.printStackTrace();
 		}
 
-		JButton btnVignette = new JButton("Vignette  ");
+		JButton btnVignette = new JButton("Vignette   ");
 		toolBar.add(btnVignette);
 		btnVignette.addActionListener(new VignetteAction());
 		try {
@@ -120,7 +144,7 @@ public class MainView extends JFrame {
 		}
 		
 
-		JButton btnPainting = new JButton("Painting ");
+		JButton btnPainting = new JButton("Painting   ");
 		toolBar.add(btnPainting);
 		btnPainting.addActionListener(new PaintingAction());
 		try {
@@ -131,7 +155,7 @@ public class MainView extends JFrame {
 		}
 		
 
-		JButton btnFisheye = new JButton("Fisheye  ");
+		JButton btnFisheye = new JButton("Fisheye    ");
 		toolBar.add(btnFisheye);
 		btnFisheye.addActionListener(new FisheyeAction());
 		try {
@@ -154,7 +178,8 @@ public class MainView extends JFrame {
 		
 
 		getContentPane().add(panelSlika, BorderLayout.CENTER);
-
+		//this.setContentPane(panelSlika);
+		
 		// u ovaj panel dodajes glavnu sliku na kojoj ce se raditi... prvo cemo je samo
 		// ubaciti
 		// posle cemo da dodamo file chooser da se bira slike na kojoj ce se raditi
@@ -166,11 +191,11 @@ public class MainView extends JFrame {
 		this.setVisible(true);
 	}
 
-	public JPanel getPanelSlika() {
+	public ImagePanel getPanelSlika() {
 		return panelSlika;
 	}
 
-	public void setPanelSlika(JPanel panelSlika) {
+	public void setPanelSlika(ImagePanel panelSlika) {
 		this.panelSlika = panelSlika;
 	}
 
