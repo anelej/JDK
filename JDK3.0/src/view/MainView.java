@@ -114,6 +114,7 @@ public class MainView extends JFrame {
 
 		JButton btnNegative = new JButton("Negative   ");
 		btnNegative.setSize(100, 30);
+
 		toolBar.add(btnNegative);
 		btnNegative.addActionListener(new NegativeAction());
 		try {
@@ -145,6 +146,7 @@ public class MainView extends JFrame {
 		
 
 		JButton btnPainting = new JButton("Painting   ");
+		
 		toolBar.add(btnPainting);
 		btnPainting.addActionListener(new PaintingAction());
 		try {
@@ -155,7 +157,9 @@ public class MainView extends JFrame {
 		}
 		
 
+
 		JButton btnFisheye = new JButton("Fisheye    ");
+
 		toolBar.add(btnFisheye);
 		btnFisheye.addActionListener(new FisheyeAction());
 		try {
@@ -178,15 +182,7 @@ public class MainView extends JFrame {
 		
 
 		getContentPane().add(panelSlika, BorderLayout.CENTER);
-		//this.setContentPane(panelSlika);
-		
-		// u ovaj panel dodajes glavnu sliku na kojoj ce se raditi... prvo cemo je samo
-		// ubaciti
-		// posle cemo da dodamo file chooser da se bira slike na kojoj ce se raditi
-		// ynaci ovde ucitas sliku i onda u klasama ...Action => one su akcije za
-		// dugmice efekata
-		// u toj klasi pokupis sliku sa panela i editujes je.
-		// mainView.slikaPanel.getimage .. recimo, lupila sam sad
+
 		
 		this.setVisible(true);
 	}
