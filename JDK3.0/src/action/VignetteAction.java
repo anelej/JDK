@@ -8,22 +8,17 @@ import javax.imageio.ImageIO;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
 
+import editor.AppCore;
+import editor.GrayScale;
+import editor.Vignette;
+import rafgfxlib.Util;
+
 public class VignetteAction implements ActionListener {
 
-	public VignetteAction() {
-		// TODO Auto-generated constructor stub
-//		try {
-//	//		putValue(Action.SMALL_ICON, new ImageIcon(ImageIO.read(getClass().getResourceAsStream(("/images/autoadjust.png")))));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
-	//	putValue(Action.NAME, "Auto adjust");
-	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		Vignette vignette = new Vignette(Util.loadImage(AppCore.getInstance().getImagePath()));
+		AppCore.getInstance().setImage(vignette.getBufferedImage());
 
 	}
 

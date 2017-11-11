@@ -27,6 +27,7 @@ import action.PaintingAction;
 import action.ReflectionAction;
 import action.SharpenAction;
 import action.VignetteAction;
+import editor.Komadici;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -35,6 +36,8 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JSeparator;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
@@ -56,6 +59,7 @@ public class MainView extends JFrame {
 		this.setLocationRelativeTo(null);
 		ImageIcon icon = new ImageIcon(getClass().getResource("/images/mainicon.png"));
 		this.setIconImage(icon.getImage());
+		panelSlika.addMouseListener(new Komadici());
 		
 		for(UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
 			System.out.println(info.getName());
