@@ -19,7 +19,6 @@ public class VignetteAction implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Vignette vignette = new Vignette(Util.loadImage(AppCore.getInstance().getImagePath()));
 		AppCore.getInstance().setImage(vignette.getBufferedImage());
-
 	}
 
 }
