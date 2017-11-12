@@ -80,12 +80,12 @@ public class MainView extends JFrame {
 
 		JMenu file = new JMenu("File");
 		file.add(new OpenImageAction(this));
-		JMenu fixImg = new JMenu("Fix image");
+	//	JMenu fixImg = new JMenu("Fix image");
 		menuBar.add(file);
-		menuBar.add(fixImg);
-		fixImg.add(new ContrastAction());
-		fixImg.add(new SharpenAction());
-		fixImg.add(new BrightnessAction());
+	//	menuBar.add(fixImg);
+//		fixImg.add(new ContrastAction());
+//		fixImg.add(new SharpenAction());
+//		fixImg.add(new BrightnessAction());
 
 		JMenu returnToChild = new JMenu("Return to childhood ");
 		menuBar.add(returnToChild);
