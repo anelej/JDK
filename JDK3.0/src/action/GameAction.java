@@ -24,6 +24,7 @@ public class GameAction extends JComponent implements ActionListener {
 		window.pack();
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
+		window.setResizable(false);
 
 		Timer timer = new Timer(150, game);
 		timer.start();

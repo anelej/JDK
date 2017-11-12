@@ -175,6 +175,7 @@ public class MainView extends JFrame {
 		getContentPane().add(panelSlika, BorderLayout.CENTER);
 
 		this.setVisible(true);
+		this.setResizable(false);
 	}
 
 	public JButton getBtnGame() {
