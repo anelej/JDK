@@ -7,6 +7,7 @@ import java.awt.image.BufferedImageFilter;
 import java.nio.Buffer;
 
 import rafgfxlib.Util;
+import view.GameView;
 import view.MainView;
 
 public class AppCore {
@@ -18,6 +19,7 @@ public class AppCore {
 	private String imagePath = null;
 
 	private BufferedImage bImage = null;
+
 	
 	private AppCore() {
 

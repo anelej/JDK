@@ -1,33 +1,34 @@
 package editor;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 
 import rafgfxlib.Util;
 
-public class Negative {
+public class Painting {
 
+	/// duplikat
 	private BufferedImage image = null;
 
-	public Negative(BufferedImage image) {
+	public Painting(BufferedImage image) {
 		image = Skaliranje.scale(image, 1000, 500);
 		this.image = image;
-
 	}
 
 	public BufferedImage getBufferedImage() {
 		WritableRaster source = image.getRaster();
-		WritableRaster target = Util.createRaster(source.getWidth(), source.getWidth(), false);
+		WritableRaster target = Util.createRaster(image.getWidth(), image.getHeight(), false);
+		int boje[] = new int[3];
+
 		for (int y = 0; y < source.getHeight(); y++) {
 			for (int x = 0; x < source.getWidth(); x++) {
-				int niz[] = new int[3];
-				source.getPixel(x, y, niz);
-				niz[0] = 255 - niz[0];
-				niz[1] = 255 - niz[1];
-				niz[2] = 255 - niz[2];
-
-				target.setPixel(x, y, niz);
+				if (x <= 500) {
+					source.getPixel(x, y, boje);
+					target.setPixel(x, y, boje);
+				} else {
+					source.getPixel(x - 500, y, boje);
+					target.setPixel(x, y, boje);
+				}
 			}
 		}
 		return Util.rasterToImage(target);

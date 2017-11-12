@@ -40,7 +40,7 @@ public class Komadici implements MouseListener {
 					y1++;
 					Graphics gf = AppCore.getInstance().getMainFrame().getPanelSlika().getGraphics();
 					BufferedImage pozadina = AppCore.getInstance().getbImage();
-					gf.drawImage(pozadina, 0, 0 , null);
+					gf.drawImage(pozadina, 0, 0, null);
 					gf.drawImage(bufferImage, x, y1, null);
 					try {
 						Thread.sleep(5);

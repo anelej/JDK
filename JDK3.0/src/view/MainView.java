@@ -50,6 +50,7 @@ import java.awt.GridBagConstraints;
 public class MainView extends JFrame {
 	private ImagePanel panelSlika = new ImagePanel();
 	private JPanel toolBarPanel = new JPanel();
+	private JButton btnGame = new JButton("Game ");
 
 	public MainView() {
 		setAlwaysOnTop(true);
@@ -97,7 +98,7 @@ public class MainView extends JFrame {
 		JMenu returnToChild = new JMenu("Return to childhood ");
 		menuBar.add(returnToChild);
 		
-		JButton btnGame = new JButton("Game ");
+		
 		returnToChild.add(btnGame);
 		try {
 			btnGame.setIcon(new ImageIcon(ImageIO.read(getClass().getResource("/images/game.png"))));
@@ -149,12 +150,12 @@ public class MainView extends JFrame {
 		}
 		
 
-		JButton btnPainting = new JButton("Painting   ");
+		JButton btnPainting = new JButton("Double    ");
 		
 		toolBar.add(btnPainting);
 		btnPainting.addActionListener(new PaintingAction());
 		try {
-			btnPainting.setIcon(new ImageIcon(ImageIO.read(getClass().getResource("/images/painting.png"))));
+			btnPainting.setIcon(new ImageIcon(ImageIO.read(getClass().getResource("/images/autoadjust.png"))));
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -174,7 +175,7 @@ public class MainView extends JFrame {
 		}
 		
 
-		JButton btnReflection = new JButton("Reflection");
+		JButton btnReflection = new JButton("Rotate^2  ");
 		toolBar.add(btnReflection);
 		btnReflection.addActionListener(new ReflectionAction());
 		try {
@@ -189,6 +190,14 @@ public class MainView extends JFrame {
 
 		
 		this.setVisible(true);
+	}
+
+	public JButton getBtnGame() {
+		return btnGame;
+	}
+
+	public void setBtnGame(JButton btnGame) {
+		this.btnGame = btnGame;
 	}
 
 	public ImagePanel getPanelSlika() {
@@ -206,5 +215,7 @@ public class MainView extends JFrame {
 	public void setToolBarPanel(JPanel toolBarPanel) {
 		this.toolBarPanel = toolBarPanel;
 	}
+	
+	
 
 }
