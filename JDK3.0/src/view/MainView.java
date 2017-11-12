@@ -15,7 +15,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import com.sun.javafx.scene.control.behavior.SliderBehavior.SliderKeyBinding;
 
-import action.AutoAdjustAction;
 import action.BrightnessAction;
 import action.ContrastAction;
 import action.FisheyeAction;
@@ -61,10 +60,10 @@ public class MainView extends JFrame {
 		ImageIcon icon = new ImageIcon(getClass().getResource("/images/mainicon.png"));
 		this.setIconImage(icon.getImage());
 		panelSlika.addMouseListener(new Komadici());
-		
-		for(UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
+
+		for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 			System.out.println(info.getName());
-			if("Nimbus".equals(info.getName())){
+			if ("Nimbus".equals(info.getName())) {
 				try {
 					UIManager.setLookAndFeel(info.getClassName());
 				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
@@ -78,7 +77,7 @@ public class MainView extends JFrame {
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		JMenuBar menuBar = new JMenuBar();
 		getContentPane().add(menuBar, BorderLayout.NORTH);
-		
+
 		JMenu file = new JMenu("File");
 		file.add(new OpenImageAction(this));
 		JMenu fixImg = new JMenu("Fix image");
@@ -86,19 +85,11 @@ public class MainView extends JFrame {
 		menuBar.add(fixImg);
 		fixImg.add(new ContrastAction());
 		fixImg.add(new SharpenAction());
-		fixImg.add(new AutoAdjustAction());
 		fixImg.add(new BrightnessAction());
-
-		// JMenuItem mntmContrast = new JMenuItem("Contrast");
-		// mnFixImage.add(mntmContrast);
-		//
-		// JMenuItem menuItem = new JMenuItem("");
-		// mnFixImage.add(menuItem);
 
 		JMenu returnToChild = new JMenu("Return to childhood ");
 		menuBar.add(returnToChild);
-		
-		
+
 		returnToChild.add(btnGame);
 		try {
 			btnGame.setIcon(new ImageIcon(ImageIO.read(getClass().getResource("/images/game.png"))));
@@ -113,7 +104,7 @@ public class MainView extends JFrame {
 		JToolBar toolBar = new JToolBar();
 		toolBar.setOrientation(SwingConstants.VERTICAL);
 		toolBarPanel.add(toolBar);
-		
+
 		JLabel lblClickBelowFor = new JLabel("click below for filter");
 		toolBar.add(lblClickBelowFor);
 
@@ -148,10 +139,9 @@ public class MainView extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 
 		JButton btnPainting = new JButton("Double    ");
-		
+
 		toolBar.add(btnPainting);
 		btnPainting.addActionListener(new PaintingAction());
 		try {
@@ -160,8 +150,6 @@ public class MainView extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-
 
 		JButton btnFisheye = new JButton("Fisheye    ");
 
@@ -173,7 +161,6 @@ public class MainView extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 
 		JButton btnReflection = new JButton("Rotate^2  ");
 		toolBar.add(btnReflection);
@@ -184,11 +171,9 @@ public class MainView extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 
 		getContentPane().add(panelSlika, BorderLayout.CENTER);
 
-		
 		this.setVisible(true);
 	}
 
@@ -215,7 +200,5 @@ public class MainView extends JFrame {
 	public void setToolBarPanel(JPanel toolBarPanel) {
 		this.toolBarPanel = toolBarPanel;
 	}
-	
-	
 
 }
